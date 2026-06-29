@@ -1,3 +1,10 @@
+//
+//  GlassSurface.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 enum GlassSurfaceStyle: Sendable {
@@ -5,34 +12,45 @@ enum GlassSurfaceStyle: Sendable {
     case strong
     case accent
 
+    private enum Constants {
+        static let regularFillOpacity: Double = 0.58
+        static let strongFillOpacity: Double = 0.78
+        static let accentFillOpacity: Double = 0.22
+        static let regularMaterialOpacity: Double = 0.24
+        static let strongMaterialOpacity: Double = 0.16
+        static let accentMaterialOpacity: Double = 0.20
+        static let regularRimOpacity: Double = 0.14
+        static let accentRimOpacity: Double = 0.42
+    }
+
     var fill: Color {
         switch self {
         case .regular:
-            Color(red: 0.071, green: 0.063, blue: 0.094).opacity(0.58)
+            Color(red: 0.071, green: 0.063, blue: 0.094).opacity(Constants.regularFillOpacity)
         case .strong:
-            Color(red: 0.071, green: 0.063, blue: 0.094).opacity(0.78)
+            Color(red: 0.071, green: 0.063, blue: 0.094).opacity(Constants.strongFillOpacity)
         case .accent:
-            DesignTokens.Colors.primary.opacity(0.22)
+            DesignTokens.Colors.primary.opacity(Constants.accentFillOpacity)
         }
     }
 
     var materialOpacity: Double {
         switch self {
         case .regular:
-            0.24
+            Constants.regularMaterialOpacity
         case .strong:
-            0.16
+            Constants.strongMaterialOpacity
         case .accent:
-            0.20
+            Constants.accentMaterialOpacity
         }
     }
 
     var rim: Color {
         switch self {
         case .regular, .strong:
-            Color.white.opacity(0.14)
+            Color.white.opacity(Constants.regularRimOpacity)
         case .accent:
-            DesignTokens.Colors.primaryHover.opacity(0.42)
+            DesignTokens.Colors.primaryHover.opacity(Constants.accentRimOpacity)
         }
     }
 }
@@ -46,7 +64,7 @@ struct GlassSurface<Content: View>: View {
 
     init(
         style: GlassSurfaceStyle = .regular,
-        radius: CGFloat = DesignTokens.Radius.extraLarge,
+        radius: CGFloat = CornerRadius.lg,
         @ViewBuilder content: () -> Content
     ) {
         self.style = style
@@ -60,9 +78,9 @@ struct GlassSurface<Content: View>: View {
             .clipShape(RoundedRectangle(cornerRadius: radius, style: .continuous))
             .overlay(
                 RoundedRectangle(cornerRadius: radius, style: .continuous)
-                    .strokeBorder(style.rim, lineWidth: 1)
+                    .strokeBorder(style.rim, lineWidth: GlassSurfaceConstants.borderWidth)
             )
-            .shadow(color: DesignTokens.Shadow.medium, radius: 18, x: 0, y: 12)
+            .shadow(color: DesignTokens.Shadow.medium, radius: GlassSurfaceConstants.shadowRadius, x: Spacing.zero, y: GlassSurfaceConstants.shadowY)
     }
 
     @ViewBuilder
@@ -84,8 +102,8 @@ struct GlassSurface<Content: View>: View {
                         .fill(
                             LinearGradient(
                                 colors: [
-                                    Color.white.opacity(0.16),
-                                    Color.white.opacity(0.04),
+                                    Color.white.opacity(GlassSurfaceConstants.highlightStartOpacity),
+                                    Color.white.opacity(GlassSurfaceConstants.highlightMiddleOpacity),
                                     Color.clear
                                 ],
                                 startPoint: .topLeading,
@@ -101,7 +119,7 @@ struct GlassSurface<Content: View>: View {
 extension View {
     func glassSurface(
         style: GlassSurfaceStyle = .regular,
-        radius: CGFloat = DesignTokens.Radius.extraLarge
+        radius: CGFloat = CornerRadius.lg
     ) -> some View {
         GlassSurface(style: style, radius: radius) {
             self
@@ -109,26 +127,38 @@ extension View {
     }
 }
 
-#Preview("Glass Surface") {
+#Preview {
     ZStack {
         DesignTokens.Colors.background.ignoresSafeArea()
-        VStack(spacing: 16) {
+        VStack(spacing: Spacing.md) {
             GlassSurface {
-                Text("Regular glass")
+                Text(StringResource.DesignSystem.regularGlass)
                     .foregroundStyle(.white)
-                    .padding(20)
+                    .padding(GlassSurfacePreviewConstants.contentPadding)
             }
             GlassSurface(style: .strong) {
-                Text("Strong glass")
+                Text(StringResource.DesignSystem.strongGlass)
                     .foregroundStyle(.white)
-                    .padding(20)
+                    .padding(GlassSurfacePreviewConstants.contentPadding)
             }
             GlassSurface(style: .accent) {
-                Text("Accent glass")
+                Text(StringResource.DesignSystem.accentGlass)
                     .foregroundStyle(.white)
-                    .padding(20)
+                    .padding(GlassSurfacePreviewConstants.contentPadding)
             }
         }
-        .padding()
+        .padding(Spacing.md)
     }
+}
+
+private enum GlassSurfaceConstants {
+    static let borderWidth: CGFloat = 1
+    static let shadowRadius: CGFloat = 18
+    static let shadowY: CGFloat = 12
+    static let highlightStartOpacity: Double = 0.16
+    static let highlightMiddleOpacity: Double = 0.04
+}
+
+private enum GlassSurfacePreviewConstants {
+    static let contentPadding: CGFloat = Spacing.ml
 }

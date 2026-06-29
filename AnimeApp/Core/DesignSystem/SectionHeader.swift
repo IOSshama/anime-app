@@ -1,6 +1,18 @@
+//
+//  SectionHeader.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct SectionHeader: View {
+    private enum Constants {
+        static let textSpacing: CGFloat = Spacing.xs
+        static let minimumTrailingSpacing: CGFloat = Spacing.ms
+    }
+
     let title: String
     var subtitle: String?
     var actionTitle: String?
@@ -8,33 +20,37 @@ struct SectionHeader: View {
 
     var body: some View {
         HStack(alignment: .firstTextBaseline) {
-            VStack(alignment: .leading, spacing: 4) {
+            VStack(alignment: .leading, spacing: Constants.textSpacing) {
                 Text(title)
-                    .font(.title3.bold())
+                    .font(Typography.sectionTitle)
                     .foregroundStyle(DesignTokens.Colors.text)
 
                 if let subtitle {
                     Text(subtitle)
-                        .font(.subheadline)
+                        .font(Typography.subheadline)
                         .foregroundStyle(DesignTokens.Colors.textMuted)
                 }
             }
 
-            Spacer(minLength: 12)
+            Spacer(minLength: Constants.minimumTrailingSpacing)
 
             if let actionTitle, let action {
                 Button(actionTitle, action: action)
-                    .font(.subheadline.weight(.semibold))
+                    .font(Typography.subheadlineSemibold)
                     .foregroundStyle(DesignTokens.Colors.primaryLink)
             }
         }
     }
 }
 
-#Preview("Section Header") {
+#Preview {
     ZStack {
         DesignTokens.Colors.background.ignoresSafeArea()
-        SectionHeader(title: "Новые серии", subtitle: "Сегодня", actionTitle: "Все") {}
-            .padding()
+        SectionHeader(
+            title: StringResource.DesignSystem.previewTitle,
+            subtitle: StringResource.DesignSystem.previewSubtitle,
+            actionTitle: StringResource.DesignSystem.watch
+        ) {}
+        .padding(Spacing.md)
     }
 }

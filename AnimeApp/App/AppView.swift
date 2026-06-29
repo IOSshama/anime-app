@@ -1,3 +1,10 @@
+//
+//  AppView.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct AppView: View {
@@ -28,9 +35,9 @@ struct AppView: View {
         case .player(let titleId, let episodeId):
             PlaybackView(titleId: titleId, episodeId: episodeId)
         case .collection(let slug):
-            Text("Collection: \(slug)")
+            Text(StringResource.Route.collection(slug))
         case .studio(let id):
-            Text("Studio: \(id)")
+            Text(StringResource.Route.studio(id))
         }
     }
 

@@ -1,0 +1,74 @@
+/*
+  Localizable.strings
+  AnimeApp
+
+  Created on 29/06/2026.
+*/
+
+// MARK: - Tabs
+"tab.home" = "Главная";
+"tab.catalog" = "Каталог";
+"tab.library" = "Моё";
+"tab.profile" = "Профиль";
+
+// MARK: - Routes
+"route.collection" = "Коллекция: %@";
+"route.studio" = "Студия: %@";
+
+// MARK: - Placeholders
+"placeholder.home.title" = "Главная";
+"placeholder.home.subtitle" = "Server-driven rails будут добавлены после API-интеграции.";
+"placeholder.catalog.title" = "Каталог";
+"placeholder.catalog.subtitle" = "Здесь будет catalog grid, фильтры и пагинация.";
+"placeholder.catalogFilters.title" = "Фильтры";
+"placeholder.catalogFilters.subtitle" = "Bottom sheet для draft/applied фильтров каталога.";
+"placeholder.search.title" = "Поиск";
+"placeholder.search.subtitle" = "Recent queries, popular/personal rows и live results.";
+"placeholder.titleDetails.title" = "Тайтл";
+"placeholder.titleDetails.subtitle" = "ID: %@";
+"placeholder.playback.title" = "Плеер";
+"placeholder.playback.subtitle" = "Title: %@, episode: %@";
+"placeholder.playback.autoEpisode" = "auto";
+"placeholder.library.title" = "Моё";
+"placeholder.library.subtitle" = "Списки, история, оценки и продолжить просмотр.";
+"placeholder.auth.title" = "Вход";
+"placeholder.auth.subtitle" = "Email OTP flow и onboarding.";
+"placeholder.profile.title" = "Профиль";
+"placeholder.profile.subtitle" = "Настройки аккаунта и приложения.";
+
+// MARK: - Design System
+"design.preview.title" = "Design System";
+"design.preview.subtitle" = "Базовые компоненты AnimeApp";
+"design.glass.title" = "Liquid glass surface";
+"design.glass.subtitle" = "Используется для панелей, меню и floating controls.";
+"design.glass.regular" = "Regular glass";
+"design.glass.strong" = "Strong glass";
+"design.glass.accent" = "Accent glass";
+"design.poster" = "Постер";
+"design.sampleAnimeTitle" = "Название аниме";
+"design.sample.ongoing" = "Онгоинг";
+"design.sample.comedy" = "Комедия";
+"design.sample.action" = "Экшен";
+"design.sample.horror" = "Хоррор";
+
+// MARK: - Actions
+"action.watch" = "Смотреть";
+"action.watchLater" = "Буду смотреть";
+"action.rate" = "Оценить";
+
+// MARK: - Status
+"status.announced" = "Анонс";
+"status.ongoing" = "Онгоинг";
+"status.released" = "Вышло";
+"status.planned" = "Буду";
+"status.watching" = "Смотрю";
+"status.completed" = "Просмотрено";
+
+// MARK: - Accessibility
+"accessibility.rating" = "Рейтинг %@";
+
+// MARK: - Errors
+"error.invalidURL" = "Некорректный URL";
+"error.invalidResponse" = "Некорректный ответ сервера";
+"error.statusCode" = "Сервер вернул код %d";
+"error.decodingFailed" = "Не удалось разобрать ответ сервера";

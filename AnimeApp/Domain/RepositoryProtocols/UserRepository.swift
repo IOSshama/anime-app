@@ -1,3 +1,10 @@
+//
+//  UserRepository.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import Foundation
 
 protocol UserRepository: Sendable {

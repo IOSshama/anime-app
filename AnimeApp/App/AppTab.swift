@@ -1,3 +1,10 @@
+//
+//  AppTab.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 enum AppTab: String, CaseIterable, Identifiable {
@@ -26,13 +33,13 @@ enum AppTab: String, CaseIterable, Identifiable {
     var label: some View {
         switch self {
         case .home:
-            Label("Главная", systemImage: "house")
+            Label(StringResource.Tab.home, systemImage: "house")
         case .catalog:
-            Label("Каталог", systemImage: "square.grid.2x2")
+            Label(StringResource.Tab.catalog, systemImage: "square.grid.2x2")
         case .library:
-            Label("Моё", systemImage: "bookmark")
+            Label(StringResource.Tab.library, systemImage: "bookmark")
         case .profile:
-            Label("Профиль", systemImage: "person.crop.circle")
+            Label(StringResource.Tab.profile, systemImage: "person.crop.circle")
         }
     }
 }

@@ -1,3 +1,10 @@
+//
+//  PlaceholderFeatureView.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct PlaceholderFeatureView: View {
@@ -8,16 +15,16 @@ struct PlaceholderFeatureView: View {
         ZStack {
             DesignTokens.Colors.background.ignoresSafeArea()
 
-            VStack(spacing: DesignTokens.Spacing.medium) {
+            VStack(spacing: Spacing.ms) {
                 Text(title)
-                    .font(.largeTitle.bold())
+                    .font(Typography.display)
                     .foregroundStyle(.white)
 
                 Text(subtitle)
-                    .font(.subheadline)
+                    .font(Typography.subheadline)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(DesignTokens.Colors.textMuted)
-                    .padding(.horizontal, DesignTokens.Spacing.xlarge)
+                    .padding(.horizontal, Spacing.lg)
             }
         }
         .navigationTitle(title)

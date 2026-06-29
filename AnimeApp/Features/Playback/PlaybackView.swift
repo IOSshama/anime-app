@@ -1,3 +1,10 @@
+//
+//  PlaybackView.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct PlaybackView: View {
@@ -6,8 +13,11 @@ struct PlaybackView: View {
 
     var body: some View {
         PlaceholderFeatureView(
-            title: "Плеер",
-            subtitle: "Title: \(titleId), episode: \(episodeId ?? "auto")"
+            title: StringResource.Placeholder.playbackTitle,
+            subtitle: StringResource.Placeholder.playbackSubtitle(
+                titleId: titleId,
+                episodeId: episodeId ?? StringResource.Placeholder.playbackAutoEpisode
+            )
         )
     }
 }

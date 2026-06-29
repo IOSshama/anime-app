@@ -1,6 +1,22 @@
+//
+//  FilterChip.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct FilterChip: View {
+    private enum Constants {
+        static let itemSpacing: CGFloat = 6
+        static let horizontalPadding: CGFloat = Spacing.ms
+        static let height: CGFloat = 34
+        static let selectedOpacity: Double = 0.20
+        static let selectedBorderOpacity: Double = 0.48
+        static let borderWidth: CGFloat = 1
+    }
+
     let title: String
     var systemImage: String?
     var isSelected: Bool = false
@@ -26,25 +42,28 @@ struct FilterChip: View {
 
     var body: some View {
         Button(action: action) {
-            HStack(spacing: 6) {
+            HStack(spacing: Constants.itemSpacing) {
                 if let systemImage {
                     Image(systemName: systemImage)
-                        .font(.system(size: 12, weight: .bold))
+                        .font(Typography.badgeBold)
                 }
 
                 Text(title)
                     .lineLimit(1)
             }
-            .font(.system(size: 13, weight: .semibold))
+            .font(Typography.captionSemibold)
             .foregroundStyle(isSelected ? DesignTokens.Colors.text : DesignTokens.Colors.textBody)
-            .padding(.horizontal, 12)
-            .frame(height: 34)
+            .padding(.horizontal, Constants.horizontalPadding)
+            .frame(height: Constants.height)
             .background {
                 Capsule(style: .continuous)
-                    .fill(isSelected ? role.accent.opacity(0.20) : DesignTokens.Colors.surface)
+                    .fill(isSelected ? role.accent.opacity(Constants.selectedOpacity) : DesignTokens.Colors.surface)
                     .overlay {
                         Capsule(style: .continuous)
-                            .strokeBorder(isSelected ? role.accent.opacity(0.48) : DesignTokens.Colors.lineMedium, lineWidth: 1)
+                            .strokeBorder(
+                                isSelected ? role.accent.opacity(Constants.selectedBorderOpacity) : DesignTokens.Colors.lineMedium,
+                                lineWidth: Constants.borderWidth
+                            )
                     }
             }
         }
@@ -53,24 +72,24 @@ struct FilterChip: View {
     }
 }
 
-#Preview("Filter Chips") {
+#Preview {
     ZStack {
         DesignTokens.Colors.background.ignoresSafeArea()
         FlowPreview()
-            .padding()
+            .padding(Spacing.md)
     }
 }
 
 private struct FlowPreview: View {
     var body: some View {
-        VStack(alignment: .leading, spacing: 12) {
+        VStack(alignment: .leading, spacing: Spacing.ms) {
             HStack {
-                FilterChip(title: "Онгоинг", systemImage: "dot.radiowaves.left.and.right", isSelected: true) {}
-                FilterChip(title: "Комедия") {}
+                FilterChip(title: StringResource.DesignSystem.sampleOngoing, systemImage: "dot.radiowaves.left.and.right", isSelected: true) {}
+                FilterChip(title: StringResource.DesignSystem.sampleComedy) {}
             }
             HStack {
-                FilterChip(title: "Экшен", isSelected: true, role: .include) {}
-                FilterChip(title: "Хоррор", isSelected: true, role: .exclude) {}
+                FilterChip(title: StringResource.DesignSystem.sampleAction, isSelected: true, role: .include) {}
+                FilterChip(title: StringResource.DesignSystem.sampleHorror, isSelected: true, role: .exclude) {}
             }
         }
     }

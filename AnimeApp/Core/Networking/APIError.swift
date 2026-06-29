@@ -1,3 +1,10 @@
+//
+//  APIError.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import Foundation
 
 enum APIError: LocalizedError, Sendable {
@@ -9,13 +16,13 @@ enum APIError: LocalizedError, Sendable {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
-            "Некорректный URL"
+            StringResource.ErrorMessage.invalidURL
         case .invalidResponse:
-            "Некорректный ответ сервера"
+            StringResource.ErrorMessage.invalidResponse
         case .statusCode(let code):
-            "Сервер вернул код \(code)"
+            StringResource.ErrorMessage.statusCode(code)
         case .decodingFailed:
-            "Не удалось разобрать ответ сервера"
+            StringResource.ErrorMessage.decodingFailed
         }
     }
 }

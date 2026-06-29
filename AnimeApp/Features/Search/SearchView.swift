@@ -1,7 +1,17 @@
+//
+//  SearchView.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct SearchView: View {
     var body: some View {
-        PlaceholderFeatureView(title: "Поиск", subtitle: "Recent queries, popular/personal rows и live results.")
+        PlaceholderFeatureView(
+            title: StringResource.Placeholder.searchTitle,
+            subtitle: StringResource.Placeholder.searchSubtitle
+        )
     }
 }

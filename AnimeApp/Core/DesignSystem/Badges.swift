@@ -1,36 +1,54 @@
+//
+//  Badges.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import SwiftUI
 
 struct RatingBadge: View {
+    private enum Constants {
+        static let iconSize: CGFloat = 11
+        static let horizontalPadding: CGFloat = Spacing.sm
+        static let verticalPadding: CGFloat = 5
+        static let itemSpacing: CGFloat = Spacing.xs
+        static let backgroundOpacity: Double = 0.62
+        static let borderWidth: CGFloat = 1
+        static let highScore: Double = 8
+        static let middleScore: Double = 6.5
+    }
+
     let score: Double
 
     var body: some View {
-        HStack(spacing: 4) {
+        HStack(spacing: Constants.itemSpacing) {
             Image(systemName: "star.fill")
-                .font(.system(size: 11, weight: .bold))
+                .font(.system(size: Constants.iconSize, weight: .bold))
                 .foregroundStyle(color)
 
             Text(score, format: .number.precision(.fractionLength(1)))
-                .font(.system(size: 12, weight: .bold, design: .rounded))
+                .font(Typography.badgeBold)
         }
         .foregroundStyle(DesignTokens.Colors.text)
-        .padding(.horizontal, 8)
-        .padding(.vertical, 5)
+        .padding(.horizontal, Constants.horizontalPadding)
+        .padding(.vertical, Constants.verticalPadding)
         .background {
             Capsule(style: .continuous)
-                .fill(Color.black.opacity(0.62))
+                .fill(Color.black.opacity(Constants.backgroundOpacity))
                 .overlay {
                     Capsule(style: .continuous)
-                        .strokeBorder(DesignTokens.Colors.lineStrong, lineWidth: 1)
+                        .strokeBorder(DesignTokens.Colors.lineStrong, lineWidth: Constants.borderWidth)
                 }
         }
-        .accessibilityLabel("Рейтинг \(score.formatted(.number.precision(.fractionLength(1))))")
+        .accessibilityLabel(StringResource.Accessibility.rating(score.formatted(.number.precision(.fractionLength(1)))))
     }
 
     private var color: Color {
         switch score {
-        case 8.0...:
+        case Constants.highScore...:
             DesignTokens.Colors.rating
-        case 6.5..<8.0:
+        case Constants.middleScore..<Constants.highScore:
             DesignTokens.Colors.gold
         default:
             DesignTokens.Colors.warning
@@ -50,17 +68,17 @@ struct StatusPill: View {
         var title: String {
             switch self {
             case .announced:
-                "Анонс"
+                StringResource.Status.announced
             case .ongoing:
-                "Онгоинг"
+                StringResource.Status.ongoing
             case .released:
-                "Вышло"
+                StringResource.Status.released
             case .planned:
-                "Буду"
+                StringResource.Status.planned
             case .watching:
-                "Смотрю"
+                StringResource.Status.watching
             case .completed:
-                "Просмотрено"
+                StringResource.Status.completed
             }
         }
 
@@ -86,25 +104,32 @@ struct StatusPill: View {
 
     var body: some View {
         Text(kind.title)
-            .font(.system(size: 12, weight: .semibold))
+            .font(Typography.badge)
             .foregroundStyle(kind.color)
-            .padding(.horizontal, 9)
-            .padding(.vertical, 5)
+            .padding(.horizontal, Constants.horizontalPadding)
+            .padding(.vertical, Constants.verticalPadding)
             .background {
                 Capsule(style: .continuous)
                     .fill(kind.color.opacity(0.14))
                     .overlay {
                         Capsule(style: .continuous)
-                            .strokeBorder(kind.color.opacity(0.34), lineWidth: 1)
+                            .strokeBorder(kind.color.opacity(Constants.borderOpacity), lineWidth: Constants.borderWidth)
                     }
             }
     }
+
+    private enum Constants {
+        static let horizontalPadding: CGFloat = 9
+        static let verticalPadding: CGFloat = 5
+        static let borderOpacity: Double = 0.34
+        static let borderWidth: CGFloat = 1
+    }
 }
 
-#Preview("Badges") {
+#Preview {
     ZStack {
         DesignTokens.Colors.background.ignoresSafeArea()
-        VStack(spacing: 12) {
+        VStack(spacing: Spacing.ms) {
             RatingBadge(score: 8.7)
             HStack {
                 StatusPill(kind: .announced)

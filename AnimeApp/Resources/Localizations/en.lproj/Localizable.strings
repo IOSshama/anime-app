@@ -1,0 +1,74 @@
+/*
+  Localizable.strings
+  AnimeApp
+
+  Created on 29/06/2026.
+*/
+
+// MARK: - Tabs
+"tab.home" = "Home";
+"tab.catalog" = "Catalog";
+"tab.library" = "Mine";
+"tab.profile" = "Profile";
+
+// MARK: - Routes
+"route.collection" = "Collection: %@";
+"route.studio" = "Studio: %@";
+
+// MARK: - Placeholders
+"placeholder.home.title" = "Home";
+"placeholder.home.subtitle" = "Server-driven rails will be added after API integration.";
+"placeholder.catalog.title" = "Catalog";
+"placeholder.catalog.subtitle" = "Catalog grid, filters, and pagination will live here.";
+"placeholder.catalogFilters.title" = "Filters";
+"placeholder.catalogFilters.subtitle" = "Bottom sheet for catalog draft/applied filters.";
+"placeholder.search.title" = "Search";
+"placeholder.search.subtitle" = "Recent queries, popular/personal rows, and live results.";
+"placeholder.titleDetails.title" = "Title";
+"placeholder.titleDetails.subtitle" = "ID: %@";
+"placeholder.playback.title" = "Player";
+"placeholder.playback.subtitle" = "Title: %@, episode: %@";
+"placeholder.playback.autoEpisode" = "auto";
+"placeholder.library.title" = "Mine";
+"placeholder.library.subtitle" = "Lists, history, ratings, and continue watching.";
+"placeholder.auth.title" = "Sign In";
+"placeholder.auth.subtitle" = "Email OTP flow and onboarding.";
+"placeholder.profile.title" = "Profile";
+"placeholder.profile.subtitle" = "Account and app settings.";
+
+// MARK: - Design System
+"design.preview.title" = "Design System";
+"design.preview.subtitle" = "AnimeApp base components";
+"design.glass.title" = "Liquid glass surface";
+"design.glass.subtitle" = "Used for panels, menus, and floating controls.";
+"design.glass.regular" = "Regular glass";
+"design.glass.strong" = "Strong glass";
+"design.glass.accent" = "Accent glass";
+"design.poster" = "Poster";
+"design.sampleAnimeTitle" = "Anime title";
+"design.sample.ongoing" = "Ongoing";
+"design.sample.comedy" = "Comedy";
+"design.sample.action" = "Action";
+"design.sample.horror" = "Horror";
+
+// MARK: - Actions
+"action.watch" = "Watch";
+"action.watchLater" = "Watch later";
+"action.rate" = "Rate";
+
+// MARK: - Status
+"status.announced" = "Announced";
+"status.ongoing" = "Ongoing";
+"status.released" = "Released";
+"status.planned" = "Planned";
+"status.watching" = "Watching";
+"status.completed" = "Completed";
+
+// MARK: - Accessibility
+"accessibility.rating" = "Rating %@";
+
+// MARK: - Errors
+"error.invalidURL" = "Invalid URL";
+"error.invalidResponse" = "Invalid server response";
+"error.statusCode" = "Server returned code %d";
+"error.decodingFailed" = "Failed to decode server response";

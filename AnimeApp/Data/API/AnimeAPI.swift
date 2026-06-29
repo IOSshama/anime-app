@@ -1,3 +1,10 @@
+//
+//  AnimeAPI.swift
+//  AnimeApp
+//
+//  Created by Шамхан Дандаев on 29.06.2026.
+//
+
 import Foundation
 
 enum AnimeAPI {
