@@ -1,0 +1,14 @@
+.DS_Store
+DerivedData/
+.build/
+*.xcuserstate
+xcuserdata/
+*.moved-aside
+*.xccheckout
+*.xcscmblueprint
+
+# XcodeGen output. Regenerate with `xcodegen generate`.
+AnimeApp.xcodeproj/
+
+# Local frontend reference repo, not part of the iOS app repository.
+anime-site/
