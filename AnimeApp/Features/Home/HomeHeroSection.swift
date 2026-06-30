@@ -13,7 +13,7 @@ struct HomeHeroSection: View {
         static let maxPosterWidth: CGFloat = 390
         static let posterAspectRatio: CGFloat = 2 / 3
         static let heroTopPadding: CGFloat = 0
-        static let heroLift: CGFloat = -10
+        static let heroLift: CGFloat = 24
         static let backgroundBlur: CGFloat = 34
         static let backgroundScale: CGFloat = 1.16
         static let posterShadowRadius: CGFloat = 36
@@ -191,7 +191,7 @@ struct HomeHeroSection: View {
 }
 
 private enum HomeHeroSectionConstants {
-    static let height: CGFloat = 560
+    static let height: CGFloat = 578
 }
 
 private extension Array {
