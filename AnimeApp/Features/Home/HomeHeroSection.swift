@@ -9,10 +9,11 @@ import SwiftUI
 
 struct HomeHeroSection: View {
     private enum Constants {
-        static let posterWidthRatio: CGFloat = 0.82
+        static let posterWidthRatio: CGFloat = 0.84
         static let maxPosterWidth: CGFloat = 390
         static let posterAspectRatio: CGFloat = 2 / 3
-        static let heroTopPadding: CGFloat = 10
+        static let heroTopPadding: CGFloat = 0
+        static let heroLift: CGFloat = -24
         static let backgroundBlur: CGFloat = 34
         static let backgroundScale: CGFloat = 1.16
         static let posterShadowRadius: CGFloat = 36
@@ -39,11 +40,12 @@ struct HomeHeroSection: View {
                 let posterHeight = posterWidth / Constants.posterAspectRatio
                 let selectedTitle = titles[safe: selectedIndex] ?? titles[0]
 
-                ZStack(alignment: .bottom) {
+                ZStack(alignment: .center) {
                     ambientBackground(for: selectedTitle)
 
                     VStack(spacing: Spacing.md) {
                         heroCarousel(
+                            availableWidth: proxy.size.width,
                             posterWidth: posterWidth,
                             posterHeight: posterHeight
                         )
@@ -52,8 +54,11 @@ struct HomeHeroSection: View {
                     }
                     .padding(.top, Constants.heroTopPadding)
                     .padding(.bottom, Spacing.lg)
+                    .offset(y: Constants.heroLift)
                 }
+                .frame(width: proxy.size.width, height: proxy.size.height)
             }
+            .frame(maxWidth: .infinity)
             .frame(height: HomeHeroSectionConstants.height)
         }
     }
@@ -79,15 +84,27 @@ struct HomeHeroSection: View {
         .clipped()
     }
 
-    private func heroCarousel(posterWidth: CGFloat, posterHeight: CGFloat) -> some View {
+    private func heroCarousel(
+        availableWidth: CGFloat,
+        posterWidth: CGFloat,
+        posterHeight: CGFloat
+    ) -> some View {
         TabView(selection: $selectedIndex) {
             ForEach(Array(titles.enumerated()), id: \.element.id) { index, title in
-                heroCard(title: title)
-                    .frame(width: posterWidth, height: posterHeight)
-                    .tag(index)
+                HStack(spacing: Spacing.zero) {
+                    Spacer(minLength: Spacing.zero)
+
+                    heroCard(title: title)
+                        .frame(width: posterWidth, height: posterHeight)
+
+                    Spacer(minLength: Spacing.zero)
+                }
+                .frame(width: availableWidth, height: posterHeight)
+                .tag(index)
             }
         }
         .tabViewStyle(.page(indexDisplayMode: .never))
+        .frame(width: availableWidth)
         .frame(height: posterHeight)
     }
 
@@ -174,7 +191,7 @@ struct HomeHeroSection: View {
 }
 
 private enum HomeHeroSectionConstants {
-    static let height: CGFloat = 660
+    static let height: CGFloat = 610
 }
 
 private extension Array {
