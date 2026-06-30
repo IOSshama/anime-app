@@ -10,9 +10,10 @@ import SwiftUI
 struct HomeStudioRail: View {
     private enum Constants {
         static let maxItems = 20
-        static let tileWidth: CGFloat = 158
-        static let tileHeight: CGFloat = 92
-        static let logoHeight: CGFloat = 38
+        static let tileWidth: CGFloat = 178
+        static let tileHeight: CGFloat = 106
+        static let logoMaxHeight: CGFloat = 58
+        static let horizontalPadding: CGFloat = Spacing.lg
         static let borderWidth: CGFloat = 1
     }
 
@@ -47,22 +48,46 @@ struct HomeStudioRail: View {
             RoundedRectangle(cornerRadius: CornerRadius.lg, style: .continuous)
                 .fill(Color.white)
 
-            if studio.logoURL != nil {
-                HomeRemoteImage(url: studio.logoURL, contentMode: .fit)
-                    .padding(Spacing.md)
-                    .frame(height: Constants.logoHeight)
-            } else {
-                Text(studio.name)
-                    .font(Typography.bodySemibold)
-                    .foregroundStyle(DesignTokens.Colors.card)
-                    .multilineTextAlignment(.center)
-                    .padding(Spacing.md)
-            }
+            studioLogo(studio)
         }
         .frame(width: Constants.tileWidth, height: Constants.tileHeight)
         .overlay {
             RoundedRectangle(cornerRadius: CornerRadius.lg, style: .continuous)
                 .strokeBorder(DesignTokens.Colors.lineMedium, lineWidth: Constants.borderWidth)
         }
+    }
+
+    @ViewBuilder
+    private func studioLogo(_ studio: Studio) -> some View {
+        if let logoURL = studio.logoURL {
+            AsyncImage(url: logoURL) { phase in
+                switch phase {
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(
+                            maxWidth: Constants.tileWidth - Constants.horizontalPadding * 2,
+                            maxHeight: Constants.logoMaxHeight
+                        )
+                case .empty, .failure:
+                    studioName(studio.name)
+                @unknown default:
+                    studioName(studio.name)
+                }
+            }
+            .padding(.horizontal, Constants.horizontalPadding)
+        } else {
+            studioName(studio.name)
+        }
+    }
+
+    private func studioName(_ name: String) -> some View {
+        Text(name)
+            .font(Typography.bodySemibold)
+            .foregroundStyle(DesignTokens.Colors.card)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
+            .padding(Spacing.md)
     }
 }

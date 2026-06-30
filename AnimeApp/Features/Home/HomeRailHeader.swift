@@ -14,20 +14,14 @@ struct HomeRailHeader: View {
 
     var body: some View {
         HStack(alignment: .center) {
-            Button {
-                action?()
-            } label: {
-                HStack(spacing: Spacing.xs) {
-                    Text(title)
-                        .font(Typography.title)
-                        .foregroundStyle(DesignTokens.Colors.text)
-
-                    Image(systemName: "chevron.right")
-                        .font(Typography.captionSemibold)
-                        .foregroundStyle(DesignTokens.Colors.textMuted)
+            if let action {
+                Button(action: action) {
+                    titleView
                 }
+                .buttonStyle(.plain)
+            } else {
+                titleView
             }
-            .buttonStyle(.plain)
 
             Spacer(minLength: Spacing.sm)
 
@@ -49,5 +43,11 @@ struct HomeRailHeader: View {
             }
         }
         .padding(.horizontal, Spacing.ml)
+    }
+
+    private var titleView: some View {
+        Text(title)
+            .font(Typography.title)
+            .foregroundStyle(DesignTokens.Colors.text)
     }
 }
