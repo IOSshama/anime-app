@@ -126,6 +126,15 @@ enum StringResource {
         static var total: String { tr("catalog.total", fallback: "Всего: %d") }
         static var page: String { tr("catalog.page", fallback: "Страница %d из %d") }
         static var filters: String { tr("catalog.filters", fallback: "Фильтров: %d") }
+        static var filtersTitle: String { tr("catalog.filtersTitle", fallback: "Фильтры") }
+        static var showMore: String { tr("catalog.showMore", fallback: "Показать ещё") }
+        static var summary: String { tr("catalog.summary", fallback: "Найдено: %d") }
+        static var sortPopularity: String { tr("catalog.sort.popularity", fallback: "Популярное") }
+        static var sortScore: String { tr("catalog.sort.score", fallback: "Оценка") }
+        static var sortYear: String { tr("catalog.sort.year", fallback: "Новинки") }
+        static var sortName: String { tr("catalog.sort.name", fallback: "Название") }
+        static var sortUnderrated: String { tr("catalog.sort.underrated", fallback: "Недооценённое") }
+        static var sortRandom: String { tr("catalog.sort.random", fallback: "Случайно") }
 
         static func total(_ count: Int) -> String {
             String(format: total, count)
@@ -137,6 +146,10 @@ enum StringResource {
 
         static func filters(_ count: Int) -> String {
             String(format: filters, count)
+        }
+
+        static func summary(_ count: Int) -> String {
+            String(format: summary, count)
         }
     }
 

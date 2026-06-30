@@ -100,6 +100,15 @@
 "catalog.total" = "Total: %d";
 "catalog.page" = "Page %d of %d";
 "catalog.filters" = "Filters: %d";
+"catalog.filtersTitle" = "Filters";
+"catalog.showMore" = "Show more";
+"catalog.summary" = "Found: %d";
+"catalog.sort.popularity" = "Popular";
+"catalog.sort.score" = "Score";
+"catalog.sort.year" = "Newest";
+"catalog.sort.name" = "Name";
+"catalog.sort.underrated" = "Underrated";
+"catalog.sort.random" = "Random";
 
 // MARK: - Search
 "search.query.placeholder" = "Search anime";
