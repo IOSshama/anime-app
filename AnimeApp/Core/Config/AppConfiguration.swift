@@ -12,7 +12,7 @@ struct AppConfiguration: Sendable {
     let keychainServiceName: String
 
     static let production = AppConfiguration(
-        baseURL: URL(string: "https://animesite.org")!,
+        baseURL: URL(string: "https://animeapi-production-0428.up.railway.app")!,
         keychainServiceName: "com.iosshama.animeapp.auth"
     )
 }

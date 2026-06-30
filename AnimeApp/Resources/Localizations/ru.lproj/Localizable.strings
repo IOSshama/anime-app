@@ -71,4 +71,5 @@
 "error.invalidURL" = "Некорректный URL";
 "error.invalidResponse" = "Некорректный ответ сервера";
 "error.statusCode" = "Сервер вернул код %d";
+"error.serverMessage" = "Сервер вернул код %d: %@";
 "error.decodingFailed" = "Не удалось разобрать ответ сервера";

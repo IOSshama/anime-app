@@ -16,8 +16,8 @@ struct DependencyContainer {
 
     static let live: DependencyContainer = {
         let configuration = AppConfiguration.production
-        let apiClient = URLSessionAPIClient(configuration: configuration)
         let authService = KeychainAuthService(serviceName: configuration.keychainServiceName)
+        let apiClient = URLSessionAPIClient(configuration: configuration, authService: authService)
         let imagePipeline = NukeImagePipelineService()
 
         return DependencyContainer(

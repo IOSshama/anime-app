@@ -9,8 +9,10 @@ import Foundation
 
 struct AnimeTitle: Identifiable, Hashable, Sendable {
     let id: String
+    let shikimoriId: Int?
     let titleRu: String
     let titleOriginal: String?
+    let titleEn: String?
     let posterURL: URL?
     let bannerURL: URL?
     let rating: Double?
@@ -22,6 +24,7 @@ struct AnimeTitle: Identifiable, Hashable, Sendable {
     let genres: [Genre]
     let studio: Studio?
     let description: String?
+    let hasCustomPlayer: Bool
 }
 
 enum AnimeStatus: String, Hashable, Sendable {
@@ -50,4 +53,5 @@ struct Studio: Identifiable, Hashable, Sendable {
     let id: String
     let name: String
     let logoURL: URL?
+    let titleCount: Int?
 }

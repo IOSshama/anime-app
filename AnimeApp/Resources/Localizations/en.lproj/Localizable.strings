@@ -71,4 +71,5 @@
 "error.invalidURL" = "Invalid URL";
 "error.invalidResponse" = "Invalid server response";
 "error.statusCode" = "Server returned code %d";
+"error.serverMessage" = "Server returned code %d: %@";
 "error.decodingFailed" = "Failed to decode server response";

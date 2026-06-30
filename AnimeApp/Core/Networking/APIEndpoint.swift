@@ -13,11 +13,18 @@ struct APIEndpoint: Sendable {
     var queryItems: [URLQueryItem] = []
     var headers: [String: String] = [:]
     var body: Data?
+    var requiresAuthorization = false
 
     func request(baseURL: URL) throws -> URLRequest {
-        guard var components = URLComponents(url: baseURL.appending(path: path), resolvingAgainstBaseURL: false) else {
+        guard var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: false) else {
             throw APIError.invalidURL
         }
+
+        let basePath = components.percentEncodedPath.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        let endpointPath = path.trimmingCharacters(in: CharacterSet(charactersIn: "/"))
+        components.percentEncodedPath = "/" + [basePath, endpointPath]
+            .filter { !$0.isEmpty }
+            .joined(separator: "/")
         components.queryItems = queryItems.isEmpty ? nil : queryItems
 
         guard let url = components.url else {

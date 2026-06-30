@@ -91,6 +91,9 @@ enum StringResource {
         static func statusCode(_ code: Int) -> String {
             String(format: tr("error.statusCode", fallback: "Сервер вернул код %d"), code)
         }
+        static func serverMessage(statusCode: Int, message: String) -> String {
+            String(format: tr("error.serverMessage", fallback: "Сервер вернул код %d: %@"), statusCode, message)
+        }
         static var decodingFailed: String { tr("error.decodingFailed", fallback: "Не удалось разобрать ответ сервера") }
     }
 }
