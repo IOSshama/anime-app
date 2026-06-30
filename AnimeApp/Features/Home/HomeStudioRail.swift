@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct HomeStudioRail: View {
     private enum Constants {
@@ -60,9 +61,8 @@ struct HomeStudioRail: View {
     @ViewBuilder
     private func studioLogo(_ studio: Studio) -> some View {
         if let logoURL = studio.logoURL {
-            AsyncImage(url: logoURL) { phase in
-                switch phase {
-                case .success(let image):
+            LazyImage(url: logoURL) { state in
+                if let image = state.image {
                     image
                         .resizable()
                         .scaledToFit()
@@ -70,12 +70,12 @@ struct HomeStudioRail: View {
                             maxWidth: Constants.tileWidth - Constants.horizontalPadding * 2,
                             maxHeight: Constants.logoMaxHeight
                         )
-                case .empty, .failure:
-                    studioName(studio.name)
-                @unknown default:
+                } else {
                     studioName(studio.name)
                 }
             }
+            .priority(.low)
+            .onDisappear(.lowerPriority)
             .padding(.horizontal, Constants.horizontalPadding)
         } else {
             studioName(studio.name)

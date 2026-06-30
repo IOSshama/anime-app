@@ -6,26 +6,24 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct HomeRemoteImage: View {
     let url: URL?
     var contentMode: ContentMode = .fill
 
     var body: some View {
-        AsyncImage(url: url) { phase in
-            switch phase {
-            case .empty:
-                HomeImagePlaceholder()
-            case .success(let image):
+        LazyImage(url: url) { state in
+            if let image = state.image {
                 image
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
-            case .failure:
-                HomeImagePlaceholder()
-            @unknown default:
+            } else {
                 HomeImagePlaceholder()
             }
         }
+        .priority(.high)
+        .onDisappear(.lowerPriority)
     }
 }
 
