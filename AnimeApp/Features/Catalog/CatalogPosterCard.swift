@@ -55,7 +55,8 @@ struct CatalogPosterCard: View {
     private var poster: some View {
         ZStack(alignment: .topLeading) {
             HomeRemoteImage(url: title.posterURL)
-                .aspectRatio(DesignTokens.Poster.aspectRatio, contentMode: .fit)
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .clipped()
 
             LinearGradient(
                 colors: [
@@ -66,6 +67,7 @@ struct CatalogPosterCard: View {
                 endPoint: .center
             )
         }
+        .aspectRatio(DesignTokens.Poster.aspectRatio, contentMode: .fit)
         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.md, style: .continuous))
         .overlay(alignment: .topLeading) {
             badge
