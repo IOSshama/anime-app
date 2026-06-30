@@ -12,8 +12,8 @@ struct CatalogPosterCard: View {
         static let titleLineLimit = 2
         static let metaLineLimit = 1
         static let genreLimit = 2
-        static let titleHeight: CGFloat = 42
         static let metaHeight: CGFloat = 18
+        static let textSpacing: CGFloat = Spacing.xs
         static let badgePadding: CGFloat = Spacing.sm
         static let borderWidth: CGFloat = 1
         static let shadowRadius: CGFloat = 16
@@ -25,14 +25,14 @@ struct CatalogPosterCard: View {
 
     var body: some View {
         Button(action: action) {
-            VStack(alignment: .leading, spacing: Spacing.sm) {
+            VStack(alignment: .leading, spacing: Constants.textSpacing) {
                 poster
 
                 Text(title.titleRu)
                     .font(Typography.subheadlineSemibold)
                     .foregroundStyle(DesignTokens.Colors.textStrong)
                     .lineLimit(Constants.titleLineLimit)
-                    .frame(maxWidth: .infinity, minHeight: Constants.titleHeight, alignment: .topLeading)
+                    .frame(maxWidth: .infinity, alignment: .topLeading)
 
                 Text(HomeMetaText.titleMeta(for: title))
                     .font(Typography.caption)

@@ -11,6 +11,7 @@ struct CatalogView: View {
     private enum Constants {
         static let genrePreviewLimit = 10
         static let gridSpacing: CGFloat = Spacing.md
+        static let filterBarSpacing: CGFloat = Spacing.ms
         static let topPadding: CGFloat = Spacing.lg
         static let bottomPadding: CGFloat = 120
     }
@@ -60,8 +61,7 @@ struct CatalogView: View {
             ScrollView {
                 LazyVStack(alignment: .leading, spacing: Spacing.lg) {
                     header(state)
-                    sortBar
-                    genreBar(state.filters.genres)
+                    filterBars(state.filters.genres)
 
                     LazyVGrid(columns: gridColumns, alignment: .center, spacing: Spacing.lg) {
                         ForEach(state.page.items) { title in
@@ -87,6 +87,13 @@ struct CatalogView: View {
             GridItem(.flexible(), spacing: Constants.gridSpacing),
             GridItem(.flexible(), spacing: Constants.gridSpacing)
         ]
+    }
+
+    private func filterBars(_ genres: [Genre]) -> some View {
+        VStack(alignment: .leading, spacing: Constants.filterBarSpacing) {
+            sortBar
+            genreBar(genres)
+        }
     }
 
     private func header(_ state: CatalogLoadedState) -> some View {
@@ -125,7 +132,7 @@ struct CatalogView: View {
 
     private var sortBar: some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: Spacing.sm) {
+            HStack(spacing: Spacing.xs) {
                 ForEach(CatalogSortOption.allCases) { option in
                     FilterChip(
                         title: option.title,
@@ -144,13 +151,12 @@ struct CatalogView: View {
                 }
             }
             .padding(.horizontal, Spacing.ml)
-            .padding(.vertical, Spacing.xs)
         }
     }
 
     private func genreBar(_ genres: [Genre]) -> some View {
         ScrollView(.horizontal, showsIndicators: false) {
-            HStack(spacing: Spacing.sm) {
+            HStack(spacing: Spacing.xs) {
                 ForEach(genres.prefix(Constants.genrePreviewLimit)) { genre in
                     FilterChip(
                         title: genre.name,
