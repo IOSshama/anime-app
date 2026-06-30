@@ -92,6 +92,11 @@ enum StringResource {
         static var thisWeek: String { tr("home.thisWeek", fallback: "На этой неделе") }
         static var recentlyUpdated: String { tr("home.recentlyUpdated", fallback: "Обновления") }
         static var top10: String { tr("home.top10", fallback: "Топ 10") }
+        static var genres: String { tr("home.genres", fallback: "Жанры") }
+        static var studios: String { tr("home.studios", fallback: "Студии") }
+        static var all: String { tr("home.all", fallback: "Все") }
+        static var details: String { tr("home.details", fallback: "Подробнее") }
+        static var noPoster: String { tr("home.noPoster", fallback: "Нет постера") }
         static var sectionCount: String { tr("home.sectionCount", fallback: "Секций: %d") }
         static var heroCount: String { tr("home.heroCount", fallback: "Hero: %d") }
         static var comingSoonCount: String { tr("home.comingSoonCount", fallback: "Скоро: %d") }
@@ -100,6 +105,20 @@ enum StringResource {
 
         static func count(_ format: String, _ count: Int) -> String {
             String(format: format, count)
+        }
+    }
+
+    enum Meta {
+        static var tv: String { tr("meta.type.tv", fallback: "ТВ-сериал") }
+        static var movie: String { tr("meta.type.movie", fallback: "Фильм") }
+        static var ova: String { tr("meta.type.ova", fallback: "OVA") }
+        static var ona: String { tr("meta.type.ona", fallback: "ONA") }
+        static var special: String { tr("meta.type.special", fallback: "Спешл") }
+        static var music: String { tr("meta.type.music", fallback: "Клип") }
+        static var episodes: String { tr("meta.episodes", fallback: "%d серий") }
+
+        static func episodes(_ count: Int) -> String {
+            String(format: episodes, count)
         }
     }
 

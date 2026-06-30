@@ -76,11 +76,25 @@
 "home.thisWeek" = "На этой неделе";
 "home.recentlyUpdated" = "Обновления";
 "home.top10" = "Топ 10";
+"home.genres" = "Жанры";
+"home.studios" = "Студии";
+"home.all" = "Все";
+"home.details" = "Подробнее";
+"home.noPoster" = "Нет постера";
 "home.sectionCount" = "Секций: %d";
 "home.heroCount" = "Hero: %d";
 "home.comingSoonCount" = "Скоро: %d";
 "home.genresCount" = "Жанров: %d";
 "home.studiosCount" = "Студий: %d";
+
+// MARK: - Metadata
+"meta.type.tv" = "ТВ-сериал";
+"meta.type.movie" = "Фильм";
+"meta.type.ova" = "OVA";
+"meta.type.ona" = "ONA";
+"meta.type.special" = "Спешл";
+"meta.type.music" = "Клип";
+"meta.episodes" = "%d серий";
 
 // MARK: - Catalog
 "catalog.total" = "Всего: %d";

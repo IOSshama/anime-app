@@ -76,11 +76,25 @@
 "home.thisWeek" = "This week";
 "home.recentlyUpdated" = "Recently updated";
 "home.top10" = "Top 10";
+"home.genres" = "Genres";
+"home.studios" = "Studios";
+"home.all" = "All";
+"home.details" = "Details";
+"home.noPoster" = "No poster";
 "home.sectionCount" = "Sections: %d";
 "home.heroCount" = "Hero: %d";
 "home.comingSoonCount" = "Coming soon: %d";
 "home.genresCount" = "Genres: %d";
 "home.studiosCount" = "Studios: %d";
+
+// MARK: - Metadata
+"meta.type.tv" = "TV series";
+"meta.type.movie" = "Movie";
+"meta.type.ova" = "OVA";
+"meta.type.ona" = "ONA";
+"meta.type.special" = "Special";
+"meta.type.music" = "Music";
+"meta.episodes" = "%d episodes";
 
 // MARK: - Catalog
 "catalog.total" = "Total: %d";
