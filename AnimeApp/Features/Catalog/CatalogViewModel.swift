@@ -74,6 +74,22 @@ final class CatalogViewModel {
         await reload(catalogUseCase: catalogUseCase, filtersUseCase: filtersUseCase)
     }
 
+    func applyQuery(
+        _ nextQuery: CatalogQuery,
+        catalogUseCase: LoadCatalogUseCase,
+        filtersUseCase: LoadCatalogFiltersUseCase
+    ) async {
+        var normalizedQuery = nextQuery
+        normalizedQuery.page = 1
+
+        guard query != normalizedQuery else {
+            return
+        }
+
+        query = normalizedQuery
+        await reload(catalogUseCase: catalogUseCase, filtersUseCase: filtersUseCase)
+    }
+
     func loadNextPage(using catalogUseCase: LoadCatalogUseCase) async {
         guard !isLoadingNextPage, case .loaded(let state) = phase, state.page.page < state.page.totalPages else {
             return

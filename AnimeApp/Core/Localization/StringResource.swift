@@ -129,6 +129,20 @@ enum StringResource {
         static var filtersTitle: String { tr("catalog.filtersTitle", fallback: "Фильтры") }
         static var showMore: String { tr("catalog.showMore", fallback: "Показать ещё") }
         static var summary: String { tr("catalog.summary", fallback: "Найдено: %d") }
+        static var filterTitle: String { tr("catalog.filter.title", fallback: "Фильтры") }
+        static var close: String { tr("catalog.filter.close", fallback: "Закрыть") }
+        static var applyFilters: String { tr("catalog.filter.apply", fallback: "Применить") }
+        static var resetFilters: String { tr("catalog.filter.reset", fallback: "Сбросить") }
+        static var sortSection: String { tr("catalog.filter.sort", fallback: "Сортировка") }
+        static var genreSection: String { tr("catalog.filter.genre", fallback: "Жанр") }
+        static var typeSection: String { tr("catalog.filter.type", fallback: "Тип") }
+        static var statusSection: String { tr("catalog.filter.status", fallback: "Статус") }
+        static var yearSection: String { tr("catalog.filter.year", fallback: "Год") }
+        static var allGenres: String { tr("catalog.filter.allGenres", fallback: "Все жанры") }
+        static var allTypes: String { tr("catalog.filter.allTypes", fallback: "Все типы") }
+        static var allStatuses: String { tr("catalog.filter.allStatuses", fallback: "Все статусы") }
+        static var anyYear: String { tr("catalog.filter.anyYear", fallback: "Любой год") }
+        static var unknownOption: String { tr("catalog.filter.unknown", fallback: "Неизвестно") }
         static var sortPopularity: String { tr("catalog.sort.popularity", fallback: "Популярное") }
         static var sortScore: String { tr("catalog.sort.score", fallback: "Оценка") }
         static var sortYear: String { tr("catalog.sort.year", fallback: "Новинки") }

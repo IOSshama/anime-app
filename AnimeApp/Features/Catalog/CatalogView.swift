@@ -19,6 +19,7 @@ struct CatalogView: View {
     @Environment(\.dependencies) private var dependencies
     @Environment(AppRouter.self) private var router
     @State private var viewModel = CatalogViewModel()
+    @State private var filterSheet: CatalogFilterSheetPayload?
 
     var body: some View {
         content
@@ -31,6 +32,23 @@ struct CatalogView: View {
                     filtersUseCase: dependencies.loadCatalogFiltersUseCase
                 )
                 prefetchLoadedImages()
+            }
+            .sheet(item: $filterSheet) { payload in
+                CatalogFilterSheet(
+                    filters: payload.filters,
+                    currentQuery: payload.query
+                ) { query in
+                    Task {
+                        await viewModel.applyQuery(
+                            query,
+                            catalogUseCase: dependencies.loadCatalogUseCase,
+                            filtersUseCase: dependencies.loadCatalogFiltersUseCase
+                        )
+                        prefetchLoadedImages()
+                    }
+                }
+                .presentationDetents([.medium, .large])
+                .presentationDragIndicator(.visible)
             }
     }
 
@@ -112,7 +130,7 @@ struct CatalogView: View {
                 Spacer(minLength: Spacing.sm)
 
                 Button {
-                    router.present(.catalogFilter, on: .catalog)
+                    presentFilters(state)
                 } label: {
                     Image(systemName: "slider.horizontal.3")
                         .font(Typography.headline)
@@ -128,6 +146,13 @@ struct CatalogView: View {
                 .foregroundStyle(DesignTokens.Colors.textFaint)
         }
         .padding(.horizontal, Spacing.ml)
+    }
+
+    private func presentFilters(_ state: CatalogLoadedState) {
+        filterSheet = CatalogFilterSheetPayload(
+            query: viewModel.query,
+            filters: state.filters
+        )
     }
 
     private var sortBar: some View {
@@ -211,70 +236,14 @@ struct CatalogView: View {
     }
 }
 
-private enum CatalogSortOption: CaseIterable, Identifiable {
-    case popularity
-    case score
-    case year
-    case name
-    case underrated
-    case random
-
-    var id: CatalogSort { sort }
-
-    var sort: CatalogSort {
-        switch self {
-        case .popularity:
-            .popularity
-        case .score:
-            .score
-        case .year:
-            .year
-        case .name:
-            .name
-        case .underrated:
-            .underrated
-        case .random:
-            .random
-        }
-    }
-
-    var title: String {
-        switch self {
-        case .popularity:
-            StringResource.Catalog.sortPopularity
-        case .score:
-            StringResource.Catalog.sortScore
-        case .year:
-            StringResource.Catalog.sortYear
-        case .name:
-            StringResource.Catalog.sortName
-        case .underrated:
-            StringResource.Catalog.sortUnderrated
-        case .random:
-            StringResource.Catalog.sortRandom
-        }
-    }
-
-    var systemImage: String {
-        switch self {
-        case .popularity:
-            "flame.fill"
-        case .score:
-            "star.fill"
-        case .year:
-            "calendar"
-        case .name:
-            "textformat"
-        case .underrated:
-            "sparkles"
-        case .random:
-            "shuffle"
-        }
-    }
-}
-
 private extension AnimeTitle {
     var catalogPrefetchURLs: [URL] {
         [posterURL, bannerURL].compactMap(\.self)
     }
+}
+
+private struct CatalogFilterSheetPayload: Identifiable {
+    let id = UUID()
+    let query: CatalogQuery
+    let filters: CatalogFiltersMeta
 }
