@@ -13,18 +13,35 @@ struct DependencyContainer {
     let apiClient: APIClient
     let authService: AuthService
     let imagePipeline: ImagePipelineService
+    let animeRepository: AnimeRepository
+    let loadHomeUseCase: LoadHomeUseCase
+    let loadCatalogUseCase: LoadCatalogUseCase
+    let loadCatalogFiltersUseCase: LoadCatalogFiltersUseCase
+    let loadCatalogCountUseCase: LoadCatalogCountUseCase
+    let loadStudiosUseCase: LoadStudiosUseCase
+    let loadTitleDetailsUseCase: LoadTitleDetailsUseCase
+    let searchAnimeUseCase: SearchAnimeUseCase
 
     static let live: DependencyContainer = {
         let configuration = AppConfiguration.production
         let authService = KeychainAuthService(serviceName: configuration.keychainServiceName)
         let apiClient = URLSessionAPIClient(configuration: configuration, authService: authService)
         let imagePipeline = NukeImagePipelineService()
+        let animeRepository = APIAnimeRepository(apiClient: apiClient)
 
         return DependencyContainer(
             configuration: configuration,
             apiClient: apiClient,
             authService: authService,
-            imagePipeline: imagePipeline
+            imagePipeline: imagePipeline,
+            animeRepository: animeRepository,
+            loadHomeUseCase: LoadHomeUseCase(repository: animeRepository),
+            loadCatalogUseCase: LoadCatalogUseCase(repository: animeRepository),
+            loadCatalogFiltersUseCase: LoadCatalogFiltersUseCase(repository: animeRepository),
+            loadCatalogCountUseCase: LoadCatalogCountUseCase(repository: animeRepository),
+            loadStudiosUseCase: LoadStudiosUseCase(repository: animeRepository),
+            loadTitleDetailsUseCase: LoadTitleDetailsUseCase(repository: animeRepository),
+            searchAnimeUseCase: SearchAnimeUseCase(repository: animeRepository)
         )
     }()
 }

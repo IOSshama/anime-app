@@ -79,6 +79,81 @@ enum StringResource {
         static var completed: String { tr("status.completed", fallback: "Просмотрено") }
     }
 
+    enum State {
+        static var loading: String { tr("state.loading", fallback: "Загрузка") }
+        static var errorTitle: String { tr("state.error.title", fallback: "Не удалось загрузить") }
+        static var retry: String { tr("state.retry", fallback: "Повторить") }
+        static var emptyTitle: String { tr("state.empty.title", fallback: "Пока пусто") }
+    }
+
+    enum Home {
+        static var hero: String { tr("home.hero", fallback: "Hero") }
+        static var comingSoon: String { tr("home.comingSoon", fallback: "Скоро") }
+        static var thisWeek: String { tr("home.thisWeek", fallback: "На этой неделе") }
+        static var recentlyUpdated: String { tr("home.recentlyUpdated", fallback: "Обновления") }
+        static var top10: String { tr("home.top10", fallback: "Топ 10") }
+        static var sectionCount: String { tr("home.sectionCount", fallback: "Секций: %d") }
+        static var heroCount: String { tr("home.heroCount", fallback: "Hero: %d") }
+        static var comingSoonCount: String { tr("home.comingSoonCount", fallback: "Скоро: %d") }
+        static var genresCount: String { tr("home.genresCount", fallback: "Жанров: %d") }
+        static var studiosCount: String { tr("home.studiosCount", fallback: "Студий: %d") }
+
+        static func count(_ format: String, _ count: Int) -> String {
+            String(format: format, count)
+        }
+    }
+
+    enum Catalog {
+        static var total: String { tr("catalog.total", fallback: "Всего: %d") }
+        static var page: String { tr("catalog.page", fallback: "Страница %d из %d") }
+        static var filters: String { tr("catalog.filters", fallback: "Фильтров: %d") }
+
+        static func total(_ count: Int) -> String {
+            String(format: total, count)
+        }
+
+        static func page(_ page: Int, totalPages: Int) -> String {
+            String(format: self.page, page, totalPages)
+        }
+
+        static func filters(_ count: Int) -> String {
+            String(format: filters, count)
+        }
+    }
+
+    enum Search {
+        static var queryPlaceholder: String { tr("search.query.placeholder", fallback: "Поиск аниме") }
+        static var idleTitle: String { tr("search.idle.title", fallback: "Введите запрос") }
+        static var results: String { tr("search.results", fallback: "Найдено: %d") }
+
+        static func results(_ count: Int) -> String {
+            String(format: results, count)
+        }
+    }
+
+    enum TitleDetails {
+        static var screenshots: String { tr("titleDetails.screenshots", fallback: "Скриншотов: %d") }
+        static var trailers: String { tr("titleDetails.trailers", fallback: "Трейлеров: %d") }
+        static var characters: String { tr("titleDetails.characters", fallback: "Персонажей: %d") }
+        static var similar: String { tr("titleDetails.similar", fallback: "Похожих: %d") }
+
+        static func screenshots(_ count: Int) -> String {
+            String(format: screenshots, count)
+        }
+
+        static func trailers(_ count: Int) -> String {
+            String(format: trailers, count)
+        }
+
+        static func characters(_ count: Int) -> String {
+            String(format: characters, count)
+        }
+
+        static func similar(_ count: Int) -> String {
+            String(format: similar, count)
+        }
+    }
+
     enum Accessibility {
         static func rating(_ score: String) -> String {
             String(format: tr("accessibility.rating", fallback: "Рейтинг %@"), score)

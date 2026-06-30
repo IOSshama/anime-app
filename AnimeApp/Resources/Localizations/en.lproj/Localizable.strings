@@ -64,6 +64,40 @@
 "status.watching" = "Watching";
 "status.completed" = "Completed";
 
+// MARK: - Screen State
+"state.loading" = "Loading";
+"state.error.title" = "Failed to load";
+"state.retry" = "Retry";
+"state.empty.title" = "Nothing here yet";
+
+// MARK: - Home
+"home.hero" = "Hero";
+"home.comingSoon" = "Coming soon";
+"home.thisWeek" = "This week";
+"home.recentlyUpdated" = "Recently updated";
+"home.top10" = "Top 10";
+"home.sectionCount" = "Sections: %d";
+"home.heroCount" = "Hero: %d";
+"home.comingSoonCount" = "Coming soon: %d";
+"home.genresCount" = "Genres: %d";
+"home.studiosCount" = "Studios: %d";
+
+// MARK: - Catalog
+"catalog.total" = "Total: %d";
+"catalog.page" = "Page %d of %d";
+"catalog.filters" = "Filters: %d";
+
+// MARK: - Search
+"search.query.placeholder" = "Search anime";
+"search.idle.title" = "Enter a query";
+"search.results" = "Found: %d";
+
+// MARK: - Title Details
+"titleDetails.screenshots" = "Screenshots: %d";
+"titleDetails.trailers" = "Trailers: %d";
+"titleDetails.characters" = "Characters: %d";
+"titleDetails.similar" = "Similar: %d";
+
 // MARK: - Accessibility
 "accessibility.rating" = "Rating %@";
 

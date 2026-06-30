@@ -64,6 +64,40 @@
 "status.watching" = "Смотрю";
 "status.completed" = "Просмотрено";
 
+// MARK: - Screen State
+"state.loading" = "Загрузка";
+"state.error.title" = "Не удалось загрузить";
+"state.retry" = "Повторить";
+"state.empty.title" = "Пока пусто";
+
+// MARK: - Home
+"home.hero" = "Hero";
+"home.comingSoon" = "Скоро";
+"home.thisWeek" = "На этой неделе";
+"home.recentlyUpdated" = "Обновления";
+"home.top10" = "Топ 10";
+"home.sectionCount" = "Секций: %d";
+"home.heroCount" = "Hero: %d";
+"home.comingSoonCount" = "Скоро: %d";
+"home.genresCount" = "Жанров: %d";
+"home.studiosCount" = "Студий: %d";
+
+// MARK: - Catalog
+"catalog.total" = "Всего: %d";
+"catalog.page" = "Страница %d из %d";
+"catalog.filters" = "Фильтров: %d";
+
+// MARK: - Search
+"search.query.placeholder" = "Поиск аниме";
+"search.idle.title" = "Введите запрос";
+"search.results" = "Найдено: %d";
+
+// MARK: - Title Details
+"titleDetails.screenshots" = "Скриншотов: %d";
+"titleDetails.trailers" = "Трейлеров: %d";
+"titleDetails.characters" = "Персонажей: %d";
+"titleDetails.similar" = "Похожих: %d";
+
 // MARK: - Accessibility
 "accessibility.rating" = "Рейтинг %@";
 
