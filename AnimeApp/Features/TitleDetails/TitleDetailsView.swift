@@ -27,6 +27,7 @@ struct TitleDetailsView: View {
         content
             .navigationBarBackButtonHidden(true)
             .toolbar(.hidden, for: .navigationBar)
+            .interactivePopGestureEnabled()
             .overlay(alignment: .topLeading) {
                 backButton
                     .padding(.leading, Spacing.ml)

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct TitleDetailsHeroView: View {
     private enum Constants {
-        static let heroHeight: CGFloat = 610
+        static let heroMinHeight: CGFloat = 700
         static let posterWidth: CGFloat = 202
-        static let posterTopPadding: CGFloat = 82
+        static let posterTopPadding: CGFloat = 76
+        static let contentBottomPadding: CGFloat = Spacing.xl
         static let posterShadowRadius: CGFloat = 26
         static let posterShadowY: CGFloat = 18
         static let backgroundBlur: CGFloat = 36
@@ -40,18 +41,20 @@ struct TitleDetailsHeroView: View {
             .padding(.horizontal, Spacing.ml)
         }
         .padding(.top, Constants.posterTopPadding)
+        .padding(.bottom, Constants.contentBottomPadding)
         .frame(maxWidth: .infinity)
-        .frame(height: Constants.heroHeight, alignment: .top)
+        .frame(minHeight: Constants.heroMinHeight, alignment: .top)
         .background {
-            ambientBackground
+            GeometryReader { proxy in
+                ambientBackground(height: proxy.size.height)
+            }
         }
-        .clipped()
     }
 
-    private var ambientBackground: some View {
+    private func ambientBackground(height: CGFloat) -> some View {
         ZStack {
             HomeRemoteImage(url: details.title.bannerURL ?? details.title.posterURL)
-                .frame(maxWidth: .infinity, maxHeight: Constants.heroHeight)
+                .frame(maxWidth: .infinity, maxHeight: height)
                 .clipped()
                 .blur(radius: Constants.backgroundBlur)
                 .scaleEffect(Constants.backgroundScale)
@@ -68,7 +71,7 @@ struct TitleDetailsHeroView: View {
             )
         }
         .frame(maxWidth: .infinity)
-        .frame(height: Constants.heroHeight)
+        .frame(height: height)
         .clipped()
     }
 
