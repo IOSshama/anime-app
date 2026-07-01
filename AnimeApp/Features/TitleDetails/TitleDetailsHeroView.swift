@@ -28,25 +28,23 @@ struct TitleDetailsHeroView: View {
     let details: AnimeTitleDetails
 
     var body: some View {
-        ZStack(alignment: .top) {
-            ambientBackground
+        VStack(spacing: Spacing.lg) {
+            poster
 
-            VStack(spacing: Spacing.lg) {
-                poster
-
-                VStack(spacing: Spacing.md) {
-                    titleBlock
-                    metaBlock
-                    genreBlock
-                    actionBlock
-                }
-                .padding(.horizontal, Spacing.ml)
+            VStack(spacing: Spacing.md) {
+                titleBlock
+                metaBlock
+                genreBlock
+                actionBlock
             }
-            .padding(.top, Constants.posterTopPadding)
-            .zIndex(1)
+            .padding(.horizontal, Spacing.ml)
         }
+        .padding(.top, Constants.posterTopPadding)
         .frame(maxWidth: .infinity)
-        .frame(height: Constants.heroHeight)
+        .frame(height: Constants.heroHeight, alignment: .top)
+        .background {
+            ambientBackground
+        }
         .clipped()
     }
 
@@ -72,7 +70,6 @@ struct TitleDetailsHeroView: View {
         .frame(maxWidth: .infinity)
         .frame(height: Constants.heroHeight)
         .clipped()
-        .ignoresSafeArea(edges: .top)
     }
 
     private var poster: some View {

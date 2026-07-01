@@ -13,13 +13,13 @@ import Observation
 final class TitleDetailsViewModel {
     private(set) var phase: ScreenPhase<AnimeTitleDetails> = .idle
 
-    private var didLoad = false
+    private var loadedTitleId: String?
 
     func loadIfNeeded(
         titleId: String,
         using useCase: LoadTitleDetailsUseCase
     ) async {
-        guard !didLoad else {
+        guard loadedTitleId != titleId else {
             return
         }
 
@@ -34,7 +34,7 @@ final class TitleDetailsViewModel {
 
         do {
             let details = try await useCase(id: titleId)
-            didLoad = true
+            loadedTitleId = titleId
             phase = .loaded(details)
         } catch {
             phase = .failed(error.localizedDescription)

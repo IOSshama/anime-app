@@ -66,7 +66,7 @@ struct TitleDetailsView: View {
             DesignTokens.Colors.background.ignoresSafeArea()
 
             ScrollView {
-                LazyVStack(alignment: .leading, spacing: Constants.contentSpacing) {
+                VStack(alignment: .leading, spacing: Constants.contentSpacing) {
                     TitleDetailsHeroView(details: details)
 
                     if let description = details.title.description, !description.isEmpty {
@@ -88,6 +88,7 @@ struct TitleDetailsView: View {
                 }
                 .padding(.bottom, Constants.bottomPadding)
             }
+            .id(details.id)
         }
     }
 
