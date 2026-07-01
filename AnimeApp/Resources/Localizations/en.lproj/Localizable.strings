@@ -134,6 +134,22 @@
 "titleDetails.trailers" = "Trailers: %d";
 "titleDetails.characters" = "Characters: %d";
 "titleDetails.similar" = "Similar: %d";
+"titleDetails.back" = "Back";
+"titleDetails.videoUnavailable" = "Video unavailable";
+"titleDetails.description.title" = "Description";
+"titleDetails.readMore" = "Show more";
+"titleDetails.collapse" = "Collapse";
+"titleDetails.screenshots.title" = "Screenshots";
+"titleDetails.trailers.title" = "Trailers";
+"titleDetails.trailer" = "Trailer";
+"titleDetails.characters.title" = "Characters";
+"titleDetails.character" = "Character";
+"titleDetails.similar.title" = "Similar";
+"titleDetails.related.title" = "Related";
+"titleDetails.franchise.title" = "Franchise";
+"titleDetails.studio" = "Studio";
+"titleDetails.nextEpisode" = "Next episode";
+"titleDetails.minutes" = "%d min";
 
 // MARK: - Accessibility
 "accessibility.rating" = "Rating %@";

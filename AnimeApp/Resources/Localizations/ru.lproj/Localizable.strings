@@ -134,6 +134,22 @@
 "titleDetails.trailers" = "Трейлеров: %d";
 "titleDetails.characters" = "Персонажей: %d";
 "titleDetails.similar" = "Похожих: %d";
+"titleDetails.back" = "Назад";
+"titleDetails.videoUnavailable" = "Видео пока недоступно";
+"titleDetails.description.title" = "Описание";
+"titleDetails.readMore" = "Показать ещё";
+"titleDetails.collapse" = "Свернуть";
+"titleDetails.screenshots.title" = "Скриншоты";
+"titleDetails.trailers.title" = "Трейлеры";
+"titleDetails.trailer" = "Трейлер";
+"titleDetails.characters.title" = "Персонажи";
+"titleDetails.character" = "Персонаж";
+"titleDetails.similar.title" = "Похожее";
+"titleDetails.related.title" = "Связанное";
+"titleDetails.franchise.title" = "Франшиза";
+"titleDetails.studio" = "Студия";
+"titleDetails.nextEpisode" = "Следующая серия";
+"titleDetails.minutes" = "%d мин";
 
 // MARK: - Accessibility
 "accessibility.rating" = "Рейтинг %@";

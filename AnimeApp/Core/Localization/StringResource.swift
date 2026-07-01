@@ -182,6 +182,22 @@ enum StringResource {
         static var trailers: String { tr("titleDetails.trailers", fallback: "Трейлеров: %d") }
         static var characters: String { tr("titleDetails.characters", fallback: "Персонажей: %d") }
         static var similar: String { tr("titleDetails.similar", fallback: "Похожих: %d") }
+        static var back: String { tr("titleDetails.back", fallback: "Назад") }
+        static var videoUnavailable: String { tr("titleDetails.videoUnavailable", fallback: "Видео пока недоступно") }
+        static var descriptionTitle: String { tr("titleDetails.description.title", fallback: "Описание") }
+        static var readMore: String { tr("titleDetails.readMore", fallback: "Показать ещё") }
+        static var collapse: String { tr("titleDetails.collapse", fallback: "Свернуть") }
+        static var screenshotsTitle: String { tr("titleDetails.screenshots.title", fallback: "Скриншоты") }
+        static var trailersTitle: String { tr("titleDetails.trailers.title", fallback: "Трейлеры") }
+        static var trailer: String { tr("titleDetails.trailer", fallback: "Трейлер") }
+        static var charactersTitle: String { tr("titleDetails.characters.title", fallback: "Персонажи") }
+        static var character: String { tr("titleDetails.character", fallback: "Персонаж") }
+        static var similarTitle: String { tr("titleDetails.similar.title", fallback: "Похожее") }
+        static var relatedTitle: String { tr("titleDetails.related.title", fallback: "Связанное") }
+        static var franchiseTitle: String { tr("titleDetails.franchise.title", fallback: "Франшиза") }
+        static var studio: String { tr("titleDetails.studio", fallback: "Студия") }
+        static var nextEpisode: String { tr("titleDetails.nextEpisode", fallback: "Следующая серия") }
+        static var minutes: String { tr("titleDetails.minutes", fallback: "%d мин") }
 
         static func screenshots(_ count: Int) -> String {
             String(format: screenshots, count)
@@ -197,6 +213,10 @@ enum StringResource {
 
         static func similar(_ count: Int) -> String {
             String(format: similar, count)
+        }
+
+        static func minutes(_ count: Int) -> String {
+            String(format: minutes, count)
         }
     }
 
