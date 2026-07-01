@@ -22,6 +22,7 @@ struct TitleDetailsHeroView: View {
         static let badgePadding: CGFloat = Spacing.sm
         static let borderWidth: CGFloat = 1
         static let watchButtonHeight: CGFloat = 48
+        static let actionBlockMaxWidth: CGFloat = 340
     }
 
     let details: AnimeTitleDetails
@@ -42,14 +43,18 @@ struct TitleDetailsHeroView: View {
                 .padding(.horizontal, Spacing.ml)
             }
             .padding(.top, Constants.posterTopPadding)
+            .zIndex(1)
         }
         .frame(maxWidth: .infinity)
         .frame(height: Constants.heroHeight)
+        .clipped()
     }
 
     private var ambientBackground: some View {
         ZStack {
             HomeRemoteImage(url: details.title.bannerURL ?? details.title.posterURL)
+                .frame(maxWidth: .infinity, maxHeight: Constants.heroHeight)
+                .clipped()
                 .blur(radius: Constants.backgroundBlur)
                 .scaleEffect(Constants.backgroundScale)
                 .opacity(0.70)
@@ -64,6 +69,8 @@ struct TitleDetailsHeroView: View {
                 endPoint: .bottom
             )
         }
+        .frame(maxWidth: .infinity)
+        .frame(height: Constants.heroHeight)
         .clipped()
         .ignoresSafeArea(edges: .top)
     }
@@ -177,6 +184,7 @@ struct TitleDetailsHeroView: View {
             .accessibilityLabel(StringResource.DesignSystem.watchLater)
         }
         .padding(.top, Spacing.xs)
+        .frame(maxWidth: Constants.actionBlockMaxWidth)
     }
 }
 
