@@ -23,7 +23,7 @@ extension AnimeTitleDTO {
             year: year,
             episodeCount: episodesTotal,
             ageRating: ageRating,
-            genres: genres?.map { Genre(id: $0, name: $0) } ?? [],
+            genres: genres?.map { Genre(id: $0.id, name: $0.nameRu) } ?? [],
             studio: studios?.first?.toDomain(),
             description: descriptionRu,
             hasCustomPlayer: hasCustomPlayer ?? false

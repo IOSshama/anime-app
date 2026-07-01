@@ -30,7 +30,7 @@ struct TitleDetailsView: View {
             .overlay(alignment: .topLeading) {
                 backButton
                     .padding(.leading, Spacing.ml)
-                    .padding(.top, Spacing.sm)
+                    .safeAreaPadding(.top, Spacing.sm)
             }
             .task(id: titleId) {
                 await viewModel.loadIfNeeded(
@@ -88,7 +88,6 @@ struct TitleDetailsView: View {
                 }
                 .padding(.bottom, Constants.bottomPadding)
             }
-            .ignoresSafeArea(edges: .top)
         }
     }
 

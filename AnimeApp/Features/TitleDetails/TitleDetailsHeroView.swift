@@ -9,11 +9,11 @@ import SwiftUI
 
 struct TitleDetailsHeroView: View {
     private enum Constants {
-        static let heroHeight: CGFloat = 690
-        static let posterWidth: CGFloat = 230
-        static let posterTopPadding: CGFloat = 108
-        static let posterShadowRadius: CGFloat = 34
-        static let posterShadowY: CGFloat = 22
+        static let heroHeight: CGFloat = 610
+        static let posterWidth: CGFloat = 202
+        static let posterTopPadding: CGFloat = 82
+        static let posterShadowRadius: CGFloat = 26
+        static let posterShadowY: CGFloat = 18
         static let backgroundBlur: CGFloat = 36
         static let backgroundScale: CGFloat = 1.18
         static let titleLineLimit = 3
@@ -71,7 +71,10 @@ struct TitleDetailsHeroView: View {
     private var poster: some View {
         ZStack(alignment: .topLeading) {
             HomeRemoteImage(url: details.title.posterURL)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
+                .frame(
+                    width: Constants.posterWidth,
+                    height: Constants.posterWidth / DesignTokens.Poster.aspectRatio
+                )
                 .clipped()
 
             if let rating = details.title.rating, details.title.status != .announced {
@@ -82,8 +85,10 @@ struct TitleDetailsHeroView: View {
                     .padding(Constants.badgePadding)
             }
         }
-        .aspectRatio(DesignTokens.Poster.aspectRatio, contentMode: .fit)
-        .frame(width: Constants.posterWidth)
+        .frame(
+            width: Constants.posterWidth,
+            height: Constants.posterWidth / DesignTokens.Poster.aspectRatio
+        )
         .clipShape(RoundedRectangle(cornerRadius: CornerRadius.lg, style: .continuous))
         .overlay {
             RoundedRectangle(cornerRadius: CornerRadius.lg, style: .continuous)
